@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.setInterval(() => {
+      if (!localStorage.getItem("islogin")) {
+        localStorage.clear();
+        location.href = "/";
+      }
+    }, 50);
+
+  </script>
+  <script>
+    if (!localStorage.getItem("islogin")) {
+      localStorage.clear();
+      location.href = "/";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <script>const toClassList = () => { location.href = "/classList" };</script>
+    <button onclick="toClassList()">
+      クラス情報リスト
+    </button>
+    <script>const toNewClass = () => { location.href = "/newClass" };</script>
+    <button onclick="toNewClass()">
+      クラス新規登録
+    </button>
+    <script>const logout = () => { localStorage.clear(); location.href = "/"; };</script>
+    <button onclick="logout()">
+      ログアウト
+    </button>
+  </header>
+
+
+  <label>
+    学年 :
+    <input type="number">
+  </label>
+  <br>
+  <label>
+    クラス :
+    <input type="number">
+  </label>
+  <br>
+  <label>
+    出し物 :
+    <input type="text">
+  </label>
+  <br>
+  <label>
+    代表者名 :
+    <input type="text">
+  </label>
+  <br>
+  <label>
+    飲食店フラグ :
+    <input type="checkbox">
+  </label>
+  <br>
+  <label>
+    備考 :
+    <input type="text">
+  </label>
+  <br>
+
+  <script>
+
+    const inputs = document.querySelectorAll("input");
+
+    const data = {
+      gradeNumber: Number(inputs[0].value),
+      classNumber: Number(inputs[1].value),
+      program: inputs[2].value.length !== 0 ? inputs[2].value : "未記入",
+      name: inputs[3].value.length !== 0 ? inputs[3].value : "未記入",
+      food_flag: inputs[4].checked ? 1 : 0,
+      note: inputs[5].value.length !== 0 ? inputs[5].value : "未記入",
+    }
+
+    fetch(`/api/class/${location.hash.slice(1)}`)
+      .then(res => res.json())
+      .then(data => {
+        inputs[0].value = data.gradeNumber;
+        inputs[1].value = data.classNumber;
+        inputs[2].value = data.program;
+        inputs[3].value = data.name;
+        inputs[4].checked = data.food_flag;
+        inputs[5].value = data.note;
+      })
+
+  </script>
+  <script>
+    const newClass = () => {
+      const inputs = document.querySelectorAll("input");
+
+      const data = {
+        gradeNumber: Number(inputs[0].value),
+        classNumber: Number(inputs[1].value),
+        program: inputs[2].value.length !== 0 ? inputs[2].value : "未記入",
+        name: inputs[3].value.length !== 0 ? inputs[3].value : "未記入",
+        food_flag: inputs[4].checked ? 1 : 0,
+        note: inputs[5].value.length !== 0 ? inputs[5].value : "未記入",
+      }
+      const param = {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      };
+
+      fetch(`/api/class/${location.hash.slice(1)}`, param)
+        .then(res => res.json())
+        .then(data => {
+          alert("クラス情報が更新されました");
+          location.href = "/classList";
+        })
+    }
+  </script>
+  <button onclick="newClass()">保存</button>
+</body>
+
+</html>

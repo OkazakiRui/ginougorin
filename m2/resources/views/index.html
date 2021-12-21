@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label for="login">
+    username :
+    <input type="text" id="login">
+  </label>
+  <br>
+  <label for="password">
+    password :
+    <input type="password" id="password">
+  </label>
+  <br>
+  <font color="red" id="err">
+  </font>
+  <br>
+  <script>
+    const loginHandle = () => {
+      const inputs = document.querySelectorAll("input");
+
+      const data = {
+        account: inputs[0].value,
+        password: inputs[1].value,
+      }
+      const param = {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      };
+
+      fetch("/api/login", param)
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          if (data.isLogin) {
+            localStorage.setItem("islogin", "islogin");
+            location.href = "/classList";
+          } else {
+            document.getElementById("err").innerHTML = "ユーザーまたはパスワードが正しくありません"
+          }
+        })
+    }
+  </script>
+  <button onclick="loginHandle()">ログイン</button>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.t {
+  animation: ani 2s infinite;
+}
+
+@keyframes ani {
+  0%, 100% {
+    border-top: transparent 0px solid;
+    border-left: transparent 100px solid;
+    border-right: transparent 100px solid;
+    border-bottom: red calc(100px * 1.73) solid;
+  }
+
+  50% {
+    border: yellow calc(100px * 1.73 / 2) solid;
+  }
+}

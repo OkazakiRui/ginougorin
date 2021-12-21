@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./tailwind.min.css">
+  <link rel="stylesheet" href="artist.css">
+</head>
+
+<body class="bg-gray-100">
+  <header class="bg-gray-900 text-gray-50">
+    <h1>
+      <img src="./img/logo.svg" alt="Tokyo Big Sizerのロゴ">
+    </h1>
+    <div class="open">
+      <a href="/">TopPage</a>
+      <a href="/about.html">about</a>
+      <a href="/news.html">news</a>
+    </div>
+  </header>
+
+  <div class="l-content main" id="main">
+  </div>
+
+  <!-- Album -->
+  <div class="l-content">
+    <h3 class="bg-white text-gray-700">
+      Album
+      <a href="/album.html" class="bg-green-500 text-gray-50">MORE</a>
+    </h3>
+
+    <div id="album" class="l-items">
+      <a href="/album.html" class="l-item artist">
+        <img class="shadow-xl" src="http://api.skilljapan.info/img/photo001.jpg" alt="Earl Greyの写真">
+        <p class="text-pink-500"><em>EDM</em></p>
+        <p>The First</p>
+      </a>
+      <a href="/album.html" class="l-item artist">
+        <img class="shadow-xl" src="http://api.skilljapan.info/img/photo001.jpg" alt="Earl Greyの写真">
+        <p class="text-pink-500"><em>EDM</em></p>
+        <p>The First</p>
+      </a>
+      <a href="/album.html" class="l-item artist">
+        <img class="shadow-xl" src="http://api.skilljapan.info/img/photo001.jpg" alt="Earl Greyの写真">
+        <p class="text-pink-500"><em>EDM</em></p>
+        <p>The First</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- 類似 -->
+  <div class="l-content">
+    <h3 class="bg-white text-gray-700">
+      ジャンルが似ているアーティスト
+      <a href="/artists.html" class="bg-green-500 text-gray-50">MORE</a>
+    </h3>
+    <div class="l-items">
+      <a href="/artist.html#1" class="l-item artist">
+        <img src="/img/EarlGrey.jpg" alt="EarlGreyの写真">
+        <p class="text-pink-500"><em>EDM</em></p>
+        <p>Earl Grey</p>
+      </a>
+      <a href="/artist.html#1" class="l-item artist">
+        <img src="/img/EarlGrey.jpg" alt="EarlGreyの写真">
+        <p class="text-pink-500"><em>EDM</em></p>
+        <p>Earl Grey</p>
+      </a>
+      <a href="/artist.html#1" class="l-item artist">
+        <img src="/img/EarlGrey.jpg" alt="EarlGreyの写真">
+        <p class="text-pink-500"><em>EDM</em></p>
+        <p>Earl Grey</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- event -->
+  <div class="l-content">
+    <h3 class="bg-white text-gray-700">
+      Earl Greyが出演するevent
+      <a href="/event.html" class="bg-green-500 text-gray-50">MORE</a>
+    </h3>
+    <div class="l-items">
+      <a href="/event.html" class="l-item event">
+        <img src="./img/3534428_m.jpg" alt="クラブの写真">
+        <div>
+          <p class="text-pink-500">2021.11.18</p>
+          <p>Tokyo Big Sizer New Year Live 2022 開催のお知らせ</p>
+        </div>
+      </a>
+      <a href="/event.html" class="l-item event">
+        <img src="./img/3534428_m.jpg" alt="クラブの写真">
+        <div>
+          <p class="text-pink-500">2021.8.6</p>
+          <p>「時計の針と藍色の空と」リリースパーティ開催</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <footer class="bg-gray-900 text-gray-50">
+    <small>
+      Copyright &copy; 2021 Tokyo Big Sizer All rights reserved.
+    </small>
+  </footer>
+  <script src="artist.js"></script>
+</body>
+
+</html>

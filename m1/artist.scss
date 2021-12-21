@@ -1,0 +1,52 @@
+@import "./common";
+
+.main{
+  padding-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  img{
+    display: block;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  div{
+    width: 600px;
+    h2{
+      font-size: 48px;
+    }
+    .p-0{
+      padding: 0;
+    }
+    p{
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  
+.main{
+  padding-top: 100px;
+  img{
+    display: block;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  div{
+    width: 100%;
+    h2{
+      font-size: 48px;
+    }
+    .p-0{
+      padding: 0;
+    }
+    p{
+      font-size: 18px;
+    }
+  }
+}
+
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    th,
+    td {
+      margin: 4px;
+      border: 1px solid gray;
+    }
+
+  </style>
+  <script>
+    window.setInterval(() => {
+      if (!localStorage.getItem("islogin")) {
+        localStorage.clear();
+        location.href = "/";
+      }
+    }, 50);
+  </script>
+  <script>
+    if (!localStorage.getItem("islogin")) {
+      localStorage.clear();
+      location.href = "/";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <script>const toClassList = () => { location.href = "/classList" };</script>
+    <button onclick="toClassList()">
+      クラス情報リスト
+    </button>
+    <script>const toNewClass = () => { location.href = "/newClass" };</script>
+    <button onclick="toNewClass()">
+      クラス新規登録
+    </button>
+    <script>const logout = () => { localStorage.clear(); location.href = "/"; };</script>
+    <button onclick="logout()">
+      ログアウト
+    </button>
+  </header>
+
+  <table id="table">
+    <tr>
+      <th>学年</th>
+      <th>クラス</th>
+      <th>出し物</th>
+      <th>代表者名</th>
+      <th>飲食店フラグ</th>
+      <th>備考</th>
+      <th>編集ボタン</th>
+    </tr>
+  </table>
+
+  <script>
+    const editHandle = (id) => {
+      location.href = `/editClass#${id}`
+    }
+  </script>
+
+  <script>
+    const temp = (data) => {
+      return (`
+        <tr>
+          <td>${data.gradeNumber}</td>
+          <td>${data.classNumber}</td>
+          <td>${data.program}</td>
+          <td>${data.name}</td>
+          <td>${data.food_flag}</td>
+          <td>${data.note}</td>
+          <td><button onclick="editHandle(${data.id})">編集</button></td>
+        </tr>
+      `)
+    }
+    fetch("/api/class")
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(d => {
+          document.getElementById("table").innerHTML += temp(d);
+        });
+      });
+  </script>
+
+</body>
+
+</html>
